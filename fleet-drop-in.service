@@ -1,0 +1,5 @@
+[Unit]
+After=aws-fleet-metadata.service
+
+[Service]
+EnvironmentFile=/etc/fleet-metadata
