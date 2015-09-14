@@ -9,6 +9,6 @@ Expose aws tags and metadata as fleet metadata.
 
 ## Usage
 
-`aws-fleet-metadata` should be run as a prerequisite to `fleet`. The sample [fleet-drop-in.conf](drop-in) shows how to do this with `cloud-config`.
+`aws-fleet-metadata` should be run as a prerequisite to `fleet`. The sample [drop-in](fleet-drop-in.conf) shows how to do this with `cloud-config`.
 
 Alternatively, `aws-fleet-metadata` can output the data to a file (passed to `-o`) which can be passed to `fleet` as an `EnvironmentFile`.
