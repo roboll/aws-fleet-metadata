@@ -6,6 +6,6 @@ After=docker.service
 [Service]
 ExecStart=/usr/bin/docker run \
 	-v /etc/fleet:/etc/fleet \
-	roboll/get-aws-metadata
+	roboll/aws-fleet-metadata
 Type=oneshot
 RemainAfterExit=true
