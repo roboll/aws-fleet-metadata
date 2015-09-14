@@ -18,4 +18,4 @@ RUN chmod +x /bin/jq
 ADD ./bin/get-aws-metadata /bin/get-aws-metadata
 RUN chmod +x /bin/get-aws-metadata
 
-CMD [ '/bin/get-aws-metadata' ]
+CMD /bin/get-aws-metadata
