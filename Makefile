@@ -1,8 +1,16 @@
 all: build
 
+VER := $(shell git describe --tags)
+
 .phony: build
 build:
-	docker build -t roboll/aws-fleet-metadata .
+	docker build -t roboll/aws-fleet-metadata:latest .
 
-release:
-	docker push roboll/aws-fleet-metadata
+.phony: tag
+tag: build
+	docker tag roboll/aws-fleet-metadata roboll/aws-fleet-metadata:$(VER)
+
+.phony: release
+release: tag
+	docker push roboll/aws-fleet-metadata:$(VERSION)
+	docker push roboll/aws-fleet-metadata:latest
