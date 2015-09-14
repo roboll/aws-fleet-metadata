@@ -13,8 +13,7 @@ This container must be run before the fleet service starts. It will write fleet 
 
 ## Run
 
-```
     docker run -v /etc/fleet:/etc/fleet roboll/aws-fleet-metadata
-```
+
 
 output: `/etc/fleet/aws-metadata`
