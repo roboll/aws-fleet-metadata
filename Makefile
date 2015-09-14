@@ -12,5 +12,5 @@ tag: build
 
 .phony: release
 release: tag
-	docker push roboll/aws-fleet-metadata:$(VERSION)
+	docker push roboll/aws-fleet-metadata:$(VER)
 	docker push roboll/aws-fleet-metadata:latest
