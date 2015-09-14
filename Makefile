@@ -15,7 +15,7 @@ build: buildenv
 		$(OWNER)/$(REPO).source \
 		go get ./... && \
 		CGO_ENABLED=0 GOOS=linux \
-		go build -o $(REPO)-linux-amd64 -a -tags netgo -ldflags -w .
+		go build -o $(REPO)-linux-amd64 -a -tags netgo -ldflags "-s -w" .
 
 .phony: test
 test: buildenv
