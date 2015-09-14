@@ -26,15 +26,12 @@ test: buildenv
 		go test ./...
 
 
-
-
-
-
 ###############################################################################
 # release tasks
+#
 # `release` requires:
-# - the checked out revision be tagged
-# - the env variable GITHUB_TOKEN
+# - the checked out revision be a pushed tag (so the release is created)
+# - the env variable GITHUB_TOKEN (for uploading the binary to github)
 ###############################################################################
 ID_URL      = https://api.github.com/repos/$(OWNER)/$(REPO)/releases/tags/$(TAG)
 ID          = $(shell curl -s -H "Authorization: token $(GITHUB_TOKEN)" $(ID_URL) | \
