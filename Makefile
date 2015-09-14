@@ -50,8 +50,8 @@ tag:
 
 .phony: release
 release: build test tag
-	$(shell echo 'curl -s -XPOST \
+	curl -s -XPOST \
 		-H "Authorization: token $(GITHUB_TOKEN)" \
 		-H "Content-Type: application/octet-stream" \
 		$(RELEASE_URL)?name=$(REPO)-linux-amd64 \
-		--data-binary @$(REPO)-linux-amd64')
+		--data-binary @$(REPO)-linux-amd64
