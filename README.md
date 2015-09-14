@@ -1,6 +1,6 @@
 # aws-fleet-metadata
 
-Expose aws tags as fleet metadata.
+Expose aws tags and metadata as fleet metadata.
 
 ## Requirements
 
@@ -9,15 +9,6 @@ Expose aws tags as fleet metadata.
 
 ## Usage
 
-This container must be run before the fleet service starts. It will write fleet metadata to `/etc/fleet/aws-metadata`, which should then be passed to fleet as an `EnvironmentFile`. See the sample [service file](aws-fleet-metadata.service) and [fleet drop-in](21-aws-metadata.conf).
+`aws-fleet-metadata` should be run as a prerequisite to `fleet`. The sample [fleet-drop-in.conf](drop-in) shows how to do this with `cloud-config`.
 
-## Run
-
-    docker run -v /etc/fleet:/etc/fleet roboll/aws-fleet-metadata
-
-
-output: `/etc/fleet/aws-metadata`
-
-## Plans
-
-* rewrite in golang and release as a statically linked binary that can be used in ExecStartPre for fleet
+Alternatively, `aws-fleet-metadata` can output the data to a file (passed to `-o`) which can be passed to `fleet` as an `EnvironmentFile`.
