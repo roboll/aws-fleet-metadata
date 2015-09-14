@@ -17,3 +17,7 @@ This container must be run before the fleet service starts. It will write fleet 
 
 
 output: `/etc/fleet/aws-metadata`
+
+## Plans
+
+* rewrite in golang and release as a statically linked binary that can be used in ExecStartPre for fleet
