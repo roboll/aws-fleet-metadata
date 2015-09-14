@@ -5,7 +5,7 @@
 ###############################################################################
 FROM alpine:3.1
 
-MAINTAINER rob boll <rob@kitkit.io>
+MAINTAINER rob boll <robertcboll@gmail.com>
 
 RUN apk -U add python py-pip && \
 	pip install awscli && \
