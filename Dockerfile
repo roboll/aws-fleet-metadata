@@ -1,21 +1,8 @@
-###############################################################################
-# image: roboll/aws-fleet-metadata
-#
-# Expose aws tags as fleet metadata.
-###############################################################################
-FROM alpine:3.1
+FROM golang
 
-MAINTAINER rob boll <robertcboll@gmail.com>
+ADD . /go/src/github.com/roboll/aws-fleet-metadata
 
-RUN apk --update add python py-pip curl && \
-	pip install awscli && \
-	apk --purge -v del py-pip && \
-	rm /var/cache/apk/*
+WORKDIR /go/src/github.com/roboll/aws-fleet-metadata
 
-ADD ./bin/jq-linux64-1.5 /bin/jq
-RUN chmod +x /bin/jq
-
-ADD ./bin/get-aws-metadata /bin/get-aws-metadata
-RUN chmod +x /bin/get-aws-metadata
-
-CMD /bin/get-aws-metadata
+CMD go get ./... && \
+	CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .
