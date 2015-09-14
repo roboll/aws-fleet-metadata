@@ -1,0 +1,13 @@
+#! /bin/bash
+
+set -eo pipefail
+
+instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+
+availability_zone=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+
+region=${availability_zone%?}
+
+metadata=$(aws et2 describe-instances --region $region --instance-id $instance_id | /bin/jq --raw-output '.Reservations[].Instances[].Tags | from_entries | to_entries | map("\(.key)=\(.value)") | join(", ")')
+
+echo "FLEET_METADATA=$metadata, instance_id=$instance_id, availability_zone=$availability_zone" > /etc/fleet/aws-metadata
